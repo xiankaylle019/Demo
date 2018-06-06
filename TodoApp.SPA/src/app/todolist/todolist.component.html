@@ -1,0 +1,44 @@
+
+<div class="container">
+  <div class="starter-template">
+    <div class="row">
+      <div class="col-lg-12">
+    <div class="input-group mb-3">
+      <input type="text" class="form-control" [(ngModel)]="description" placeholder="Input your Todo" aria-label="Recipient's username" aria-describedby="basic-addon2">
+      <div class="input-group-append">
+        <button class="btn btn-outline-primary"  (click)="addTodo()" type="button">Save Todo</button>
+      </div>
+    </div>
+    </div>
+    </div>
+    <div class="row">
+      <div class="col-lg-12">
+        <div>
+          <table class="table table-bordered">
+            <thead>
+              <th>Id</th>
+              <th>Description</th>
+              <th>Date Created</th>
+              <th>Last Updated</th>
+              <th>Action</th>
+            </thead>
+            <tbody>
+              <tr *ngFor="let todo of todos">
+                <td>{{ todo.id }}</td>
+                <td [ngClass]="{'complete-task' : todo.isAccomplished }">{{ todo.description }}</td>
+                <td>{{ todo.createdOn | date }}</td>
+                <td>{{ todo.lastUpdatedOn | date:'MM/dd/yyyy hh:mm:ss' }}</td>
+                <td> 
+                    <div class="form-check">
+                      <input class="form-check-input" type="checkbox" [checked]="todo.isAccomplished" (change)="setDone($event,todo)" id="inlineCheckbox1" value="option1">
+                </div>
+              </td>
+              </tr>              
+            </tbody>
+          </table>
+        </div>
+      
+    </div>
+  </div>
+  </div>
+</div>
